@@ -8,7 +8,7 @@ import org.apache.spark.sql.SQLContext;
 public class SQLContextApp {
 
     public static void main(String[] args) {
-        String path = SQLContextApp.class.getClassLoader().getResource("") + "people.json";
+        String path = args.length > 0 ? args[0] : SQLContextApp.class.getClassLoader().getResource("") + "people.json";
 
         SparkConf sparkConf = new SparkConf();
         sparkConf.setAppName("SQLContextApp")
