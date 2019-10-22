@@ -37,6 +37,7 @@
         <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
         <hbase.version>1.2.0-cdh5.7.0</hbase.version>
         <hive-jdbc.version>1.2.1.spark2</hive-jdbc.version>
+        <mysql.version>5.1.47</mysql.version>
         <jackson.version>2.6.5</jackson.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
@@ -83,6 +84,11 @@
                 <groupId>org.spark-project.hive</groupId>
                 <artifactId>hive-jdbc</artifactId>
                 <version>${hive-jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
