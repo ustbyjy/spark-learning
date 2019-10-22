@@ -36,6 +36,7 @@
         <spark.version>2.1.0</spark.version>
         <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
         <hbase.version>1.2.0-cdh5.7.0</hbase.version>
+        <hive-jdbc.version>1.2.1.spark2</hive-jdbc.version>
         <jackson.version>2.6.5</jackson.version>
         <junit.version>4.12</junit.version>
     </properties>
@@ -76,6 +77,11 @@
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
                 <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.spark-project.hive</groupId>
+                <artifactId>hive-jdbc</artifactId>
+                <version>${hive-jdbc.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
