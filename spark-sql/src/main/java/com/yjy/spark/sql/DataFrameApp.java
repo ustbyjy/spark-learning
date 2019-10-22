@@ -21,8 +21,8 @@ public class DataFrameApp {
         // desc people;
         peopleDataFrame.printSchema();
 
-        // select * from people;
-        peopleDataFrame.show();
+        // select * from people limit 20;
+        peopleDataFrame.show(20);
 
         // select name from people;
         peopleDataFrame.select("name").show();

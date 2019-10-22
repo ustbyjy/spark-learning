@@ -39,6 +39,7 @@
         <hive-jdbc.version>1.2.1.spark2</hive-jdbc.version>
         <jackson.version>2.6.5</jackson.version>
         <junit.version>4.12</junit.version>
+        <lombok.version>1.18.10</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -93,6 +94,11 @@
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
