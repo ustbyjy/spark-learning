@@ -1,4 +1,4 @@
-package com.yjy.spark.sql;
+package com.yjy.spark.sql.datasource;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,8 @@ import java.util.List;
 public class HiveApp {
 
     public static void main(String[] args) {
-        System.setProperty("user.name", "root");
+        // 需要指定访问HDFS的用户，否则抛出：Permission denied: user=Administrator, access=WRITE, inode="/user/hive/warehouse/student":root:supergroup:drwxrwxr-x
+        System.setProperty("HADOOP_USER_NAME", "root");
 
         SparkSession sparkSession = SparkSession.builder()
                 .appName("HiveApp")
@@ -28,10 +29,10 @@ public class HiveApp {
         }
 
         Dataset<Row> studentDF = sparkSession.createDataFrame(studentList, Student.class);
-        studentDF.write().format("parquet").mode(SaveMode.Append).saveAsTable("student_1");
 
-        sparkSession.sql("show tables").show();
-        sparkSession.sql("select * from student_1").show(200);
+        // Saving data in the Hive serde table `default`.`student` is not supported yet. Please use the insertInto() API as an alternative..;
+//        studentDF.write().mode(SaveMode.Append).saveAsTable("student");
+        studentDF.write().mode(SaveMode.Append).insertInto("student");
 
         sparkSession.stop();
     }
