@@ -16,6 +16,10 @@ public class SparkSessionApp {
         people.printSchema();
         people.show();
 
+        // 注册临时表
+        people.createOrReplaceTempView("people");
+        sparkSession.sql("select * from people").show();
+
         sparkSession.stop();
     }
 
