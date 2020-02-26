@@ -19,6 +19,16 @@
 
     <repositories>
         <repository>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
             <releases>
@@ -34,9 +44,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spark.version>2.1.0</spark.version>
-        <hadoop.version>2.6.0-cdh5.7.0</hadoop.version>
-        <hbase.version>1.2.0-cdh5.7.0</hbase.version>
+        <spark.version>2.2.0</spark.version>
+        <hadoop.version>2.6.0-cdh5.16.2</hadoop.version>
         <hive-jdbc.version>1.2.1.spark2</hive-jdbc.version>
         <mysql.version>5.1.47</mysql.version>
         <jackson.version>2.6.5</jackson.version>
@@ -50,16 +59,6 @@
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-client</artifactId>
                 <version>${hadoop.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hbase</groupId>
-                <artifactId>hbase-client</artifactId>
-                <version>${hbase.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hbase</groupId>
-                <artifactId>hbase-server</artifactId>
-                <version>${hbase.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
