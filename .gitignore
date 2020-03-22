@@ -34,6 +34,7 @@ tmp
 
 ## Spark
 spark-warehouse
+metastore_db
 
 ### Log
 *.log

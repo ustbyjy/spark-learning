@@ -23,12 +23,12 @@ public class TransformApp {
 
         List<String> blacks = Arrays.asList("zs", "ls");
         JavaPairRDD<String, Boolean> blacksRDD = streamingContext.sparkContext().parallelize(blacks).
-                mapToPair((PairFunction<String, String, Boolean>) x -> new Tuple2<String, Boolean>(x, true));
+                mapToPair((PairFunction<String, String, Boolean>) x -> new Tuple2<>(x, true));
 
-        JavaReceiverInputDStream<String> lines = streamingContext.socketTextStream("vhost1", 9999);
+        JavaReceiverInputDStream<String> lines = streamingContext.socketTextStream("vhost1", 29999);
 
         // 使用左外连接，join是内连接
-        JavaDStream<String> cleanedDStream = lines.mapToPair((PairFunction<String, String, String>) x -> new Tuple2<String, String>(x.split(",")[1], x))
+        JavaDStream<String> cleanedDStream = lines.mapToPair((PairFunction<String, String, String>) x -> new Tuple2<>(x.split(",")[1], x))
                 .transform(rdd -> rdd.leftOuterJoin(blacksRDD)
                         .filter(x -> !x._2._2.orElse(false))
                         .map(x -> x._2._1)

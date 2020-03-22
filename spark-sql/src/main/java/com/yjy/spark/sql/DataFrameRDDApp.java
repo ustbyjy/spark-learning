@@ -2,9 +2,8 @@ package com.yjy.spark.sql;
 
 import lombok.Data;
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
+import org.apache.spark.api.java.function.MapFunction;
+import org.apache.spark.sql.*;
 
 public class DataFrameRDDApp {
 
@@ -30,6 +29,17 @@ public class DataFrameRDDApp {
         infoDataFrame.createOrReplaceTempView("info");
 
         sparkSession.sql("SELECT name FROM info WHERE age BETWEEN 13 AND 30").show();
+
+        Encoder<String> stringEncoder = Encoders.STRING();
+        Dataset<String> namesByIndexDF = infoDataFrame.map(
+                (MapFunction<Row, String>) row -> "Name: " + row.getString(2),
+                stringEncoder);
+        namesByIndexDF.show();
+
+        Dataset<String> namesByFieldDF = infoDataFrame.map(
+                (MapFunction<Row, String>) row -> "Name: " + row.<String>getAs("name"),
+                stringEncoder);
+        namesByFieldDF.show();
 
         sparkSession.stop();
     }

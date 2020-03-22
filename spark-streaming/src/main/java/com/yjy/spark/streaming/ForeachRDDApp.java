@@ -19,7 +19,7 @@ public class ForeachRDDApp {
         SparkConf sparkConf = new SparkConf().setMaster("local[2]").setAppName("ForeachRDDApp");
         JavaStreamingContext streamingContext = new JavaStreamingContext(sparkConf, Durations.seconds(5));
 
-        JavaReceiverInputDStream<String> lines = streamingContext.socketTextStream("vhost1", 9999);
+        JavaReceiverInputDStream<String> lines = streamingContext.socketTextStream("vhost1", 29999);
 
         JavaDStream<String> words = lines.flatMap(line -> Arrays.asList(line.split(" ")).iterator());
 

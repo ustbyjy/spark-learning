@@ -36,12 +36,12 @@ public class MapJoinApp {
             int pos = s.indexOf(",");
             return new Tuple2<>(s.substring(0, pos), s.substring(pos + 1));
         }).mapPartitions((FlatMapFunction<Iterator<Tuple2<String, String>>, Tuple2<String, Tuple2<String, String>>>) tuple2Iterator -> {
-            Map<String, String> map1 = broadcastMap.value();
+            Map<String, String> bMap = broadcastMap.value();
             List<Tuple2<String, Tuple2<String, String>>> results = new ArrayList<>();
             while (tuple2Iterator.hasNext()) {
                 Tuple2<String, String> tuple2 = tuple2Iterator.next();
-                if (map1.containsKey(tuple2._1)) {
-                    results.add(new Tuple2<>(tuple2._1, new Tuple2<String, String>(tuple2._2, map1.get(tuple2._1))));
+                if (bMap.containsKey(tuple2._1)) {
+                    results.add(new Tuple2<>(tuple2._1, new Tuple2<>(tuple2._2, bMap.get(tuple2._1))));
                 }
             }
 

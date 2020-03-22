@@ -1,0 +1,7 @@
+spark,spark,hadoop
+hive,hive,hive
+hadoop,flume,kafka
+docker,spark,spark
+hdfs,hdfs,yarn
+spark,hadoo,hadoop
+hbase,storm,impala
